@@ -224,7 +224,8 @@
         }
 
         let selectedCharacter = 'null';
-
+const playerImg = new Image();
+playerImg.src = "player.png";
         // Select Character UI
         const charCards = document.querySelectorAll('.char-card');
         charCards.forEach(card => {
@@ -503,22 +504,16 @@
                 }
 
                 // Draw Player Jet
-                ctx.save();
-                ctx.translate(player.x, player.y);
-                ctx.fillStyle = '#00ffff';
-                ctx.beginPath();
-                ctx.moveTo(0, -22);
-                ctx.lineTo(18, 18);
-                ctx.lineTo(6, 12);
-                ctx.lineTo(0, 20);
-                ctx.lineTo(-6, 12);
-                ctx.lineTo(-18, 18);
-                ctx.closePath();
-                ctx.fill();
-                ctx.shadowColor = '#00ffff';
-                ctx.shadowBlur = 10;
-                ctx.fill();
-                ctx.restore();
+                // Draw Player Spaceship Image
+if (playerImg.complete && playerImg.naturalWidth > 0) {
+    ctx.drawImage(
+        playerImg,
+        player.x - 35,
+        player.y - 40,
+        70,
+        80
+    );
+}
 
                 // Draw Character Picture Beside Plane
                 const charImg = charImages[selectedCharacter];
